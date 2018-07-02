@@ -3,7 +3,8 @@ package com.facebook.jingweih.tinnews;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.MotionEvent;
+
+import com.facebook.jingweih.tinnews.common.ContainerFragment;
 
 public class TinFragmentPagerAdapter extends FragmentPagerAdapter {
     private Fragment[] fragments = new Fragment[FRAGMENT_NUMBER];

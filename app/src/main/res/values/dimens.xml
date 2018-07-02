@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bottom_navigation_height">50dp</dimen>
+    <dimen name="activity_horizontal_margin">20dp</dimen>
+    <dimen name="four_dp">4dp</dimen>
+</resources>

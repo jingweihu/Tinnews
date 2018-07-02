@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/author_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/four_dp"
+        android:text="Author:"
+        android:maxLines="1"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/four_dp"
+        android:text="@string/author_unknown"
+        android:id="@+id/author"
+        app:layout_constraintLeft_toRightOf="@+id/author_label"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/description_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/four_dp"
+        android:text="Description:"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/author_label"
+        app:layout_constraintTop_toBottomOf="@id/author_label" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/four_dp"
+        android:id="@+id/description"
+        app:layout_constraintLeft_toLeftOf="@+id/description_label"
+        app:layout_constraintRight_toLeftOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@+id/description_label" />
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/image"/>
+
+    <View
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/gray"/>
+
+</android.support.constraint.ConstraintLayout>
