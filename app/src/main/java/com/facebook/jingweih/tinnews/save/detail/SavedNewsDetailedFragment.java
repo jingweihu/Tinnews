@@ -8,13 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.facebook.jingweih.tinnews.R;
+import com.facebook.jingweih.tinnews.common.BaseViewModel;
+import com.facebook.jingweih.tinnews.common.Util;
+import com.facebook.jingweih.tinnews.common.ViewModelAdapter;
 import com.facebook.jingweih.tinnews.mvp.MvpFragment;
 import com.facebook.jingweih.tinnews.retrofit.Response.News;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class SavedNewsDetailedFragment extends MvpFragment<SavedNewsDetailedContract.Presenter> implements SavedNewsDetailedContract.View {
 
 
     private static final String NEWS = "news";
+    private ViewModelAdapter viewModelAdapter;
     public static SavedNewsDetailedFragment newInstance(News news) {
 
         Bundle args = new Bundle();
@@ -32,13 +39,35 @@ public class SavedNewsDetailedFragment extends MvpFragment<SavedNewsDetailedCont
         View view = inflater.inflate(R.layout.fragment_news_list, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        viewModelAdapter = new ViewModelAdapter();
+        recyclerView.setAdapter(viewModelAdapter);
         return view;
     }
 
-
-
     @Override
     public SavedNewsDetailedContract.Presenter getPresenter() {
-        return null;
+        return new SavedNewsDetailedPresenter(getArguments().getParcelable(NEWS));
+    }
+
+    @Override
+    public void loadNews(News news) {
+        List<BaseViewModel> viewModels = new LinkedList<>();
+        viewModels.add(new TitleViewModel(news.title));
+        if (!Util.isStringEmpty(news.author) || !Util.isStringEmpty(news.time)) {
+            viewModels.add(new AuthorViewModel(news.author, news.time));
+        }
+
+        if (!Util.isStringEmpty((news.image))) {
+            viewModels.add(new ImageViewModel(news.image));
+        }
+
+        if (!Util.isStringEmpty(news.description)) {
+            viewModels.add(new DescriptionViewModel(news.description));
+        }
+
+        if (!Util.isStringEmpty(news.url)) {
+            viewModels.add(new ReadmoreViewModel(news.url, tinFragmentManager));
+        }
+        viewModelAdapter.addViewModels(viewModels);
     }
 }

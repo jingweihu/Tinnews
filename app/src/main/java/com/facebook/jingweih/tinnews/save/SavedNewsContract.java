@@ -13,9 +13,13 @@ public interface SavedNewsContract {
 
     interface Presenter extends  MvpContract.Presenter<View, Model> {
         void loadSavedNews(List<News> newsList);
+
+        SavedNewsPresenter.DeleteListener getOnDeleteListener();
     }
 
     interface Model extends MvpContract.Model<Presenter> {
         void fetchDate();
+
+        void deleteNews(News news);
     }
 }

@@ -1,4 +1,4 @@
-package com.facebook.jingweih.tinnews.save;
+package com.facebook.jingweih.tinnews.profile;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,22 +9,15 @@ import android.view.ViewGroup;
 
 import com.facebook.jingweih.tinnews.R;
 import com.facebook.jingweih.tinnews.common.ViewModelAdapter;
-import com.facebook.jingweih.tinnews.mvp.MvpContract;
 import com.facebook.jingweih.tinnews.mvp.MvpFragment;
-import com.facebook.jingweih.tinnews.retrofit.Response.News;
 
-import java.util.LinkedList;
-import java.util.List;
-
-public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> implements SavedNewsContract.View {
-
+public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> implements ProfileContract.View {
     private ViewModelAdapter viewModelAdapter;
 
-    public static SavedNewsFragment newInstance() {
-        SavedNewsFragment tinBasicFragment = new SavedNewsFragment();
-        return tinBasicFragment;
+    public static TinProfileFragment newInstance() {
+        TinProfileFragment fragment = new TinProfileFragment();
+        return fragment;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,18 +30,14 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
         return view;
     }
 
+
     @Override
-    public SavedNewsContract.Presenter getPresenter() {
-        return new SavedNewsPresenter();
+    public ProfileContract.Presenter getPresenter() {
+        return new ProfilePresenter();
     }
 
     @Override
-    public void loadSavedNews(List<News> newsList) {
-        List<SavedNewsViewModel> savedNewsViewModels = new LinkedList<>();
-        for (News news : newsList) {
-            savedNewsViewModels.add(new SavedNewsViewModel(R.layout.saved_news_item, news, tinFragmentManager,
-                    presenter.getOnDeleteListener()));
-        }
-        viewModelAdapter.addViewModels(savedNewsViewModels);
+    public void setView() {
+        viewModelAdapter.addViewModel(new RomTextViewModel(getString(R.string.clear_cache), presenter.getListener()));
     }
 }

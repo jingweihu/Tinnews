@@ -1,22 +1,14 @@
 package com.facebook.jingweih.tinnews;
 
+import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.facebook.jingweih.tinnews.common.ContainerFragment;
 import com.facebook.jingweih.tinnews.common.TinBasicActivity;
 import com.facebook.jingweih.tinnews.common.TinBasicFragment;
-import com.facebook.jingweih.tinnews.common.TinFragmentManager;
-import com.facebook.jingweih.tinnews.retrofit.NewsRequestApi;
-import com.facebook.jingweih.tinnews.retrofit.RetrofitClient;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
 
 public class MainActivity extends TinBasicActivity {
     private ViewPager viewPager;

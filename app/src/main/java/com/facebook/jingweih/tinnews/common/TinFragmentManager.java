@@ -12,6 +12,8 @@ public interface TinFragmentManager {
 
     void doFragmentTransaction(TinBasicFragment basicFragment);
 
+    void onBackPressed();
+
     @LayoutRes
     int getLayout();
 }

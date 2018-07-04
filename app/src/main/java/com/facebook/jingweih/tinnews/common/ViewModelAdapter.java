@@ -25,6 +25,13 @@ public class ViewModelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         notifyDataSetChanged();
     }
 
+    public void addViewModel(BaseViewModel viewModel) {
+        this.viewModels.add(viewModel);
+        viewTypeMap.put(viewModel.getViewType(), viewModel);
+        int position = getPosition(viewModel);
+        notifyItemInserted(position);
+    }
+
     public void removeViewModel(int position) {
         if (position < -1 || position >= viewModels.size()) {
             return;

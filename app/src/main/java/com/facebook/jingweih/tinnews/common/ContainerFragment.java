@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.jingweih.tinnews.profile.TinProfileFragment;
 import com.facebook.jingweih.tinnews.save.SavedNewsFragment;
 import com.facebook.jingweih.tinnews.R;
 import com.facebook.jingweih.tinnews.mvp.MvpContract;
@@ -39,7 +40,7 @@ public class ContainerFragment extends TinBasicFragment {
             case SAVE_PAGE:
                 return SavedNewsFragment.newInstance();
             case PROFILE_PAGE:
-                return SavedNewsFragment.newInstance();
+                return TinProfileFragment.newInstance();
             default:
                 throw new IndexOutOfBoundsException();
         }

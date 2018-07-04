@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:id="@+id/author"
+        android:padding="8dp"
+        android:textColor="@color/gray"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:id="@+id/delimiter"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintLeft_toRightOf="@id/author"
+        app:layout_constraintTop_toTopOf="@id/author"
+        app:layout_constraintBottom_toBottomOf="@id/author"
+        android:background="@color/light_gray"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textSize="12sp"
+        android:id="@+id/time_stamp"
+        android:padding="8dp"
+        app:layout_constraintLeft_toRightOf="@id/delimiter"
+        android:textColor="@color/gray"
+        />
+
+</android.support.constraint.ConstraintLayout>

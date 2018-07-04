@@ -40,4 +40,15 @@ public class SavedNewsPresenter implements SavedNewsContract.Presenter {
             view.loadSavedNews(newsList);
         }
     }
+
+    @Override
+    public DeleteListener getOnDeleteListener() {
+        return news -> {
+            model.deleteNews(news);
+        };
+    }
+
+    interface DeleteListener {
+        void onDelete(News news);
+    }
 }

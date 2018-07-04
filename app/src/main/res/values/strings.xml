@@ -21,4 +21,5 @@
         completions."
     </string>
     <string name="author_unknown">Unknown Author</string>
+    <string name="clear_cache">Clear Cache</string>
 </resources>

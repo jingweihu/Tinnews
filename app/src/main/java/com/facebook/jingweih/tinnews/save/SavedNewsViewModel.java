@@ -1,5 +1,6 @@
 package com.facebook.jingweih.tinnews.save;
 
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 
 import com.facebook.jingweih.tinnews.R;
 import com.facebook.jingweih.tinnews.common.BaseViewModel;
+import com.facebook.jingweih.tinnews.common.LongPressGesture;
 import com.facebook.jingweih.tinnews.common.TinFragmentManager;
 import com.facebook.jingweih.tinnews.common.Util;
 import com.facebook.jingweih.tinnews.retrofit.Response.News;
@@ -16,11 +18,14 @@ public class SavedNewsViewModel extends BaseViewModel<SavedNewsViewModel.SavedNe
 
     private News news;
     private TinFragmentManager fragmentManager;
+    private SavedNewsPresenter.DeleteListener deleteListener;
 
-    public SavedNewsViewModel(int itemResourceId, News news, TinFragmentManager fragmentManager) {
+    public SavedNewsViewModel(int itemResourceId, News news, TinFragmentManager fragmentManager, SavedNewsPresenter.DeleteListener deleteListener) {
         super(itemResourceId);
         this.news = news;
         this.fragmentManager = fragmentManager;
+        this.deleteListener = deleteListener;
+
     }
 
     @Override
@@ -37,8 +42,27 @@ public class SavedNewsViewModel extends BaseViewModel<SavedNewsViewModel.SavedNe
 
         holder.icon.setImageResource(R.drawable.ic_t_icon);
 
-        holder.itemView.setOnClickListener(view -> {
-            fragmentManager.doFragmentTransaction(SavedNewsDetailedFragment.newInstance(news));
+        GestureDetectorCompat gestureDetector = new GestureDetectorCompat(holder.itemView.getContext(), new LongPressGesture(new LongPressGesture.GestureListener() {
+            @Override
+            public void onLongPress() {
+                TinsBottomDialog dialog = new TinsBottomDialog(holder.itemView.getContext());
+                dialog.setOnClickListener(view -> {
+                    deleteListener.onDelete(news);
+                    if (dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+
+            @Override
+            public void onPress() {
+                fragmentManager.doFragmentTransaction(SavedNewsDetailedFragment.newInstance(news));
+            }
+        }));
+        holder.itemView.setOnTouchListener((view, motionEvent) -> {
+            gestureDetector.onTouchEvent(motionEvent);
+            return true;
         });
     }
 
