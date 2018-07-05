@@ -7,9 +7,13 @@ import android.widget.TextView;
 import com.facebook.jingweih.tinnews.R;
 import com.facebook.jingweih.tinnews.common.BaseViewModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class DescriptionViewModel extends BaseViewModel<DescriptionViewModel.DescriptionViewHolder> {
 
     private final String description;
+
     public DescriptionViewModel(String description) {
         super(R.layout.description_layout);
         this.description = description;

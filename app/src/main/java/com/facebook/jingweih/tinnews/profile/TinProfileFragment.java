@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.facebook.jingweih.tinnews.R;
 import com.facebook.jingweih.tinnews.common.ViewModelAdapter;
 import com.facebook.jingweih.tinnews.mvp.MvpFragment;
+import com.facebook.jingweih.tinnews.save.detail.TitleViewModel;
 
 public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> implements ProfileContract.View {
     private ViewModelAdapter viewModelAdapter;
@@ -22,7 +23,7 @@ public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> i
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_news_list, container, false);
+        View view = inflater.inflate(R.layout.recycler_layout, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         viewModelAdapter = new ViewModelAdapter();
@@ -38,6 +39,13 @@ public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> i
 
     @Override
     public void setView() {
+        viewModelAdapter.addViewModel(new TitleViewModel(getString(R.string.setting), R.layout.setting_title_layout));
         viewModelAdapter.addViewModel(new RomTextViewModel(getString(R.string.clear_cache), presenter.getListener()));
     }
+
+    @Override
+    public boolean isViewEmpty() {
+        return viewModelAdapter == null || viewModelAdapter.isEmpty();
+    }
+
 }

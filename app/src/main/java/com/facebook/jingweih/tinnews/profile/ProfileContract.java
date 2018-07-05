@@ -8,6 +8,7 @@ public class ProfileContract {
 
     interface View extends MvpContract.View<Presenter> {
         void setView();
+        boolean isViewEmpty();
     }
 
     interface Presenter extends MvpContract.Presenter<View, Model> {

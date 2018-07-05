@@ -9,13 +9,14 @@
         android:layout_height="24dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="4dp"
+        android:layout_margin="@dimen/eight_dp"
         android:id="@+id/back"
-        app:srcCompat="@drawable/ic_arrow_back_black_24dp"/>
+        app:srcCompat="@drawable/ic_close_black_24dp"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginTop="@dimen/eight_dp"
         android:background="@color/light_gray"
         android:id="@+id/delimiter"
         app:layout_constraintTop_toBottomOf="@id/back"

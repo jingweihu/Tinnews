@@ -1,35 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:padding="8dp"
-    android:orientation="vertical">
-    <TextView
+    android:layout_marginTop="@dimen/four_dp"
+    android:background="@drawable/bottom_dialog_background"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="BottomDialog"
-        android:padding="8dp"
-        android:gravity="center_horizontal"/>
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/eight_dp"
+            android:id="@+id/back"
+            app:srcCompat="@drawable/ic_close_black_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/dancing_script"
+            android:padding="8dp"
+            android:text="@string/bottom_header"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/four_dp"
+        android:layout_marginRight="@dimen/four_dp"
+        android:background="@color/light_gray" />
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete The News"
-        android:textSize="15dp"
-        android:padding="14dp"
+    <RelativeLayout
         android:id="@+id/delete"
-        android:textColor="@color/dark_gray"
-        android:textStyle="bold"/>
-
-    <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:orientation="horizontal"
+        android:padding="4dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/four_dp"
+            android:text="Delete the news"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
+
+
+    </RelativeLayout>
 </LinearLayout>

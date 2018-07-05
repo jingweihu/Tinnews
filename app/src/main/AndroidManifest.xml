@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:name=".TinApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:icon="@mipmap/ic_launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,6 +28,8 @@
             android:name=".onboard.TinOnBoardingActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait" />
+        <activity android:name=".WebViewActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

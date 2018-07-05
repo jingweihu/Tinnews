@@ -87,4 +87,8 @@ public class ViewModelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             viewTypeMap.put(baseViewModel.getViewType(), baseViewModel);
         }
     }
+
+    public boolean isEmpty() {
+        return viewModels.isEmpty();
+    }
 }

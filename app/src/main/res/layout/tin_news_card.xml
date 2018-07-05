@@ -1,50 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="350dp"
-    android:layout_height="375dp"
-    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="375dp"
+    android:layout_height="425dp"
     android:layout_marginBottom="50dp"
     android:orientation="vertical">
+
     <android.support.v7.widget.CardView
-        android:orientation="vertical"
-        android:background="@drawable/card_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
+        android:background="@drawable/card_background"
+        android:orientation="vertical"
         app:cardCornerRadius="7dp"
         app:cardElevation="6dp">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_marginTop="25dp"
-            android:orientation="vertical"
+            android:layout_height="125dp"
             android:layout_gravity="top"
-            android:gravity="center|left|start">
+            android:layout_marginTop="15dp"
+            android:gravity="center|left|start"
+            android:orientation="vertical">
+
             <TextView
-                android:padding="@dimen/four_dp"
                 android:id="@+id/news_title"
                 android:layout_width="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:singleLine="true"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_marginTop="@dimen/four_dp"
+                android:layout_height="wrap_content"
                 android:padding="@dimen/four_dp"
+                android:singleLine="true"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/delimiter"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/four_dp"
+                android:layout_marginRight="@dimen/four_dp"
+                android:background="@color/light_gray" />
+
+            <TextView
                 android:id="@+id/news_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/four_dp"
                 android:maxLines="2"
-                android:textSize="10sp"
-                android:textColor="@color/dark_gray"/>
+                android:padding="@dimen/four_dp"
+                android:fontFamily="@font/indie_flower"
+                android:textColor="@color/dark_gray"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/news_image"
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="100dp"/>
+            android:layout_height="270dp"
+            android:layout_marginTop="120dp"
+            android:scaleType="centerCrop" />
     </android.support.v7.widget.CardView>
 </FrameLayout>

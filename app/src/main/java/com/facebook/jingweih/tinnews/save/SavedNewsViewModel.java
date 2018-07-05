@@ -1,5 +1,6 @@
 package com.facebook.jingweih.tinnews.save;
 
+import android.support.annotation.DrawableRes;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -19,13 +20,14 @@ public class SavedNewsViewModel extends BaseViewModel<SavedNewsViewModel.SavedNe
     private News news;
     private TinFragmentManager fragmentManager;
     private SavedNewsPresenter.DeleteListener deleteListener;
+    private static int[] ICON_ARRAY = new int[]{R.drawable.a_news_icon, R.drawable.g_news_icon,
+            R.drawable.c_news_icon, R.drawable.y_news_icon, R.drawable.m_news_icon};
 
     public SavedNewsViewModel(int itemResourceId, News news, TinFragmentManager fragmentManager, SavedNewsPresenter.DeleteListener deleteListener) {
         super(itemResourceId);
         this.news = news;
         this.fragmentManager = fragmentManager;
         this.deleteListener = deleteListener;
-
     }
 
     @Override
@@ -40,7 +42,8 @@ public class SavedNewsViewModel extends BaseViewModel<SavedNewsViewModel.SavedNe
         }
         holder.description.setText(news.getDescription());
 
-        holder.icon.setImageResource(R.drawable.ic_t_icon);
+
+        holder.icon.setImageResource(getDrawable());
 
         GestureDetectorCompat gestureDetector = new GestureDetectorCompat(holder.itemView.getContext(), new LongPressGesture(new LongPressGesture.GestureListener() {
             @Override
@@ -66,6 +69,10 @@ public class SavedNewsViewModel extends BaseViewModel<SavedNewsViewModel.SavedNe
         });
     }
 
+    private @DrawableRes int getDrawable() {
+        return ICON_ARRAY[(int)(Math.random() * 5)];
+    }
+
     public static class SavedNewsViewHolder extends RecyclerView.ViewHolder {
 
         TextView author;
@@ -79,5 +86,6 @@ public class SavedNewsViewModel extends BaseViewModel<SavedNewsViewModel.SavedNe
             icon = itemView.findViewById(R.id.image);
         }
     }
+
 
 }

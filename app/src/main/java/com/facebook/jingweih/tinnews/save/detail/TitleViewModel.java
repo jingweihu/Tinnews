@@ -1,5 +1,6 @@
 package com.facebook.jingweih.tinnews.save.detail;
 
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -11,6 +12,11 @@ public class TitleViewModel extends BaseViewModel<TitleViewModel.TitleViewModelH
     private String title;
     public TitleViewModel(String title) {
         super(R.layout.title_layout);
+        this.title = title;
+    }
+
+    public TitleViewModel(String title, @LayoutRes int layout) {
+        super(layout);
         this.title = title;
     }
 

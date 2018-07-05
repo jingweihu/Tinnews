@@ -12,7 +12,7 @@ public class RomTextViewModel extends BaseViewModel<RomTextViewModel.RomTextView
     private final String rowText;
     private final View.OnClickListener listener;
     public RomTextViewModel(String rowText, View.OnClickListener listener) {
-        super(R.layout.row_text_layout);
+        super(R.layout.setting_row_text_layout);
         this.rowText = rowText;
         this.listener = listener;
     }

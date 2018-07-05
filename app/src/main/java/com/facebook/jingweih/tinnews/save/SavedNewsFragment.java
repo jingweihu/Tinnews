@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.facebook.jingweih.tinnews.R;
 import com.facebook.jingweih.tinnews.common.ViewModelAdapter;
@@ -19,6 +20,7 @@ import java.util.List;
 public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> implements SavedNewsContract.View {
 
     private ViewModelAdapter viewModelAdapter;
+    private TextView emptyState;
 
     public static SavedNewsFragment newInstance() {
         SavedNewsFragment tinBasicFragment = new SavedNewsFragment();
@@ -32,6 +34,7 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
         View view = inflater.inflate(R.layout.fragment_news_list, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        emptyState = view.findViewById(R.id.empty_state);
         viewModelAdapter = new ViewModelAdapter();
         recyclerView.setAdapter(viewModelAdapter);
         return view;
@@ -44,6 +47,11 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
 
     @Override
     public void loadSavedNews(List<News> newsList) {
+        if (newsList.size() == 0) {
+            emptyState.setVisibility(View.VISIBLE);
+        } else {
+            emptyState.setVisibility(View.GONE);
+        }
         List<SavedNewsViewModel> savedNewsViewModels = new LinkedList<>();
         for (News news : newsList) {
             savedNewsViewModels.add(new SavedNewsViewModel(R.layout.saved_news_item, news, tinFragmentManager,

@@ -7,11 +7,17 @@ import android.widget.TextView;
 import com.facebook.jingweih.tinnews.R;
 import com.facebook.jingweih.tinnews.common.BaseViewModel;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class AuthorViewModel extends BaseViewModel<AuthorViewModel.AuthorViewModelHolder> {
 
     private final String author;
     private final String timeStamp;
 
+    private SimpleDateFormat simpleDateFormat;
     public AuthorViewModel(String author, String timeStamp) {
         super(R.layout.author_layout);
         this.author = author;
@@ -26,7 +32,18 @@ public class AuthorViewModel extends BaseViewModel<AuthorViewModel.AuthorViewMod
     @Override
     public void bindViewHolder(AuthorViewModelHolder holder) {
         holder.author.setText(author);
-        holder.timeStamp.setText(timeStamp);
+        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
+        Date date = null;
+        String formatTime = null;
+        try {
+            date = simpleDateFormat.parse(timeStamp);
+            simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            formatTime = simpleDateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        holder.timeStamp.setText(formatTime);
     }
 
     static class AuthorViewModelHolder extends RecyclerView.ViewHolder {

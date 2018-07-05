@@ -22,4 +22,7 @@
     </string>
     <string name="author_unknown">Unknown Author</string>
     <string name="clear_cache">Clear Cache</string>
+    <string name="setting">Setting</string>
+    <string name="no_saved_news">No Saved News</string>
+    <string name="bottom_header">Bottom Dialog</string>
 </resources>

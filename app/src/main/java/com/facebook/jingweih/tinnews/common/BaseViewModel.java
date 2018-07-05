@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.ParseException;
+
 public abstract class BaseViewModel<V extends RecyclerView.ViewHolder> {
 
     private final int itemResourceId;
