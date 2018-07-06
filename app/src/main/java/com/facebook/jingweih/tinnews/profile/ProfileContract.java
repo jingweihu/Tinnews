@@ -9,12 +9,12 @@ public class ProfileContract {
     interface View extends MvpContract.View<Presenter> {
         void setView();
         boolean isViewEmpty();
+        void onCacheCleared();
     }
 
     interface Presenter extends MvpContract.Presenter<View, Model> {
-
-
-        android.view.View.OnClickListener getListener();
+        void onCacheCleared();
+        android.view.View.OnClickListener getCacheClearListener();
     }
 
     interface Model extends MvpContract.Model<Presenter> {

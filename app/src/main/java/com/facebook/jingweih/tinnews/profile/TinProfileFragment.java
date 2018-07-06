@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.facebook.jingweih.tinnews.R;
 import com.facebook.jingweih.tinnews.common.ViewModelAdapter;
 import com.facebook.jingweih.tinnews.mvp.MvpFragment;
+import com.facebook.jingweih.tinnews.profile.country.CountrySettingFragment;
 import com.facebook.jingweih.tinnews.save.detail.TitleViewModel;
 
 public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> implements ProfileContract.View {
@@ -40,12 +41,20 @@ public class TinProfileFragment extends MvpFragment<ProfileContract.Presenter> i
     @Override
     public void setView() {
         viewModelAdapter.addViewModel(new TitleViewModel(getString(R.string.setting), R.layout.setting_title_layout));
-        viewModelAdapter.addViewModel(new RomTextViewModel(getString(R.string.clear_cache), presenter.getListener()));
+        viewModelAdapter.addViewModel(new RomTextViewModel(getString(R.string.clear_cache), presenter.getCacheClearListener()));
+        viewModelAdapter.addViewModel(new RomTextViewModel(getString(R.string.country_source), v -> {
+            tinFragmentManager.doFragmentTransaction(CountrySettingFragment.newInstance());
+        }));
     }
 
     @Override
     public boolean isViewEmpty() {
         return viewModelAdapter == null || viewModelAdapter.isEmpty();
+    }
+
+    @Override
+    public void onCacheCleared() {
+        tinFragmentManager.showSnackBar(getString(R.string.cache_cleared));
     }
 
 }

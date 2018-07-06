@@ -25,4 +25,13 @@
     <string name="setting">Setting</string>
     <string name="no_saved_news">No Saved News</string>
     <string name="bottom_header">Bottom Dialog</string>
+
+    <string name="share_link">Share The Link</string>
+    <string name="copy_the_link">Copy The Link</string>
+    <string name="cache_cleared">Cache Cleared</string>
+    <string name="country_source">Change Country Source</string>
+
+    <string name="us_country">The United States</string>
+    <string name="cn_country">China</string>
+    <string name="de_country">Germany</string>
 </resources>

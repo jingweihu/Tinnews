@@ -13,6 +13,15 @@
         android:id="@+id/back"
         app:srcCompat="@drawable/ic_close_black_24dp"/>
 
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/eight_dp"
+        android:id="@+id/more"
+        app:srcCompat="@drawable/ic_more_vert_black_24dp"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"

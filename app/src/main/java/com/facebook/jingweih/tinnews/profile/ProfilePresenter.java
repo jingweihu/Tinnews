@@ -4,7 +4,6 @@ import android.view.View;
 
 public class ProfilePresenter implements ProfileContract.Presenter {
 
-
     private ProfileContract.View view;
     private ProfileContract.Model model;
 
@@ -37,7 +36,14 @@ public class ProfilePresenter implements ProfileContract.Presenter {
     }
 
     @Override
-    public View.OnClickListener getListener() {
+    public void onCacheCleared() {
+        if (view != null) {
+            view.onCacheCleared();
+        }
+    }
+
+    @Override
+    public View.OnClickListener getCacheClearListener() {
         return view -> {
             model.deleteAllNewsCache();
         };

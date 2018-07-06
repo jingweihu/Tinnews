@@ -37,6 +37,15 @@
         app:layout_constraintTop_toBottomOf="@+id/delimiter" />
 
 
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/snackbar"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation">
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

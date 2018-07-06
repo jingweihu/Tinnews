@@ -29,6 +29,7 @@ ext {
     retrofitVersion = '2.2.0'
     rxjavaVersion = '2.0.1'
     room_version = '1.1.1'
+    leakcanary = '1.5.4'
 
 }
 
@@ -67,5 +68,10 @@ dependencies {
     implementation "android.arch.persistence.room:guava:$room_version"
 
     implementation 'com.facebook.stetho:stetho:1.5.0'
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary"
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
 
 }

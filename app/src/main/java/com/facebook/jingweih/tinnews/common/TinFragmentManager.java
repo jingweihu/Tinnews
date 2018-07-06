@@ -9,13 +9,11 @@ import com.facebook.jingweih.tinnews.common.TinBasicFragment;
 
 public interface TinFragmentManager {
 
-    FragmentManager getTinFragmentManager();
-
     void doFragmentTransaction(TinBasicFragment basicFragment);
 
-    void onBackPressed();
-
     void startActivityWithBundle(Class<?> clazz, boolean isFinished, Bundle bundle);
+
+    void showSnackBar(String message);
 
     @LayoutRes
     int getLayout();

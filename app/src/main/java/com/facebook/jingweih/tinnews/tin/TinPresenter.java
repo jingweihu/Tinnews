@@ -1,6 +1,11 @@
 package com.facebook.jingweih.tinnews.tin;
 
+import com.facebook.jingweih.tinnews.profile.country.CountryChangeEvent;
 import com.facebook.jingweih.tinnews.retrofit.Response.News;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -15,7 +20,6 @@ public class TinPresenter implements TinContract.Presenter {
 
     @Override
     public void onCreate() {
-
     }
 
     @Override
@@ -25,20 +29,27 @@ public class TinPresenter implements TinContract.Presenter {
 
     @Override
     public void onViewAttached(TinContract.View view) {
+        EventBus.getDefault().register(this);
         this.view = view;
-        tinModel.fetchDate();
+        tinModel.fetchDate(false);
     }
 
     @Override
     public void onViewDetached() {
         this.view = null;
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
-    public void onNewsLoaded(List<News> newsList) {
+    public void onNewsLoaded(List<News> newsList, boolean isClear) {
         if (view != null) {
-            view.onNewsLoaded(newsList);
+            view.onNewsLoaded(newsList, isClear);
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(CountryChangeEvent event) {
+        tinModel.fetchDate(true);
     }
 
     @Override
@@ -50,6 +61,13 @@ public class TinPresenter implements TinContract.Presenter {
     public void message(String string) {
         if (view != null) {
             view.message(string);
+        }
+    }
+
+    @Override
+    public void fetchData(boolean isClear) {
+        if (this.view != null) {
+            tinModel.fetchDate(false);
         }
     }
 }

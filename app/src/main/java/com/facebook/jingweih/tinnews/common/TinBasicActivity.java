@@ -15,11 +15,6 @@ public abstract class TinBasicActivity extends AppCompatActivity implements TinF
     }
 
     @Override
-    public FragmentManager getTinFragmentManager() {
-        return getSupportFragmentManager();
-    }
-
-    @Override
     public void startActivityWithBundle(Class<?> clazz, boolean isFinished, Bundle bundle) {
         Intent intent = new Intent(this, clazz);
         intent.putExtra(BUNDLE, bundle);

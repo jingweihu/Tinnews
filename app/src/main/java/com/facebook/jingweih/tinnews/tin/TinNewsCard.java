@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.jingweih.tinnews.R;
+import com.facebook.jingweih.tinnews.common.Util;
 import com.facebook.jingweih.tinnews.retrofit.Response.News;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -43,7 +44,11 @@ public class TinNewsCard {
 
     @Resolve
     private void onResolved(){
-        Picasso.get().load(news.getImage()).into(image);
+        if (Util.isStringEmpty(news.image)) {
+            image.setImageResource(R.drawable.no_image_available);
+        } else {
+            Picasso.get().load(news.getImage()).into(image);
+        }
         newsTitle.setText(news.getTitle());
         newsDescription.setText(news.getDescription());
     }
@@ -62,7 +67,6 @@ public class TinNewsCard {
     @SwipeIn
     private void onSwipeIn(){
         Log.d("EVENT", "onSwipedIn");
-        swipeView.addView(this);
         onSwipeListener.onLike(news);
 
     }
@@ -80,5 +84,6 @@ public class TinNewsCard {
 
     interface OnSwipeListener {
         void onLike(News news);
+
     }
 }

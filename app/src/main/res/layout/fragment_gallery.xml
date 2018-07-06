@@ -15,6 +15,7 @@
             android:id="@+id/rejectBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginRight="30dp"
             android:background="@drawable/ic_cancel"
             android:tint="@color/gray"/>
         <ImageButton

@@ -26,6 +26,11 @@ public class TinOnBoardingActivity extends TinBasicActivity {
     }
 
     @Override
+    public void showSnackBar(String message) {
+
+    }
+
+    @Override
     public int getLayout() {
         return R.layout.activity_login;
     }

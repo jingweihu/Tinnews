@@ -23,7 +23,7 @@ public class ProfileModel implements ProfileContract.Model {
     @Override
     public void deleteAllNewsCache() {
         Completable.fromAction(() -> db.newsDao().deleteAllNews()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(() -> {
-
+            presenter.onCacheCleared();
         }, error -> {
 
         });
